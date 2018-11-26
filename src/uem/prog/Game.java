@@ -1,7 +1,8 @@
 package uem.prog;
 
+import static uem.prog.Strings.s;
+
 import java.util.Arrays;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
@@ -10,16 +11,16 @@ public class Game {
 		GameOption selected = null;
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("OPCION USUARIO!");
-		System.out.print("Opcion: ");
+		System.out.println(s(0));
+		System.out.print(s(1));
 		try {
 			String input = "";
 			while ((input = sc.nextLine()) != null && input.length() > 0 && (selected = GameOptionUtils.parse(input)) == null) {
 				if (selected == null) {
-					System.out.println("OPCION USUARIO!");
-					System.out.print("Opcion: ");
+					System.out.println(s(0));
+					System.out.print(s(1));
 				} else {
-					System.out.println("Has escogido: " + selected);
+					System.out.println(s(2, selected));
 				}
 			}
 		} catch (Exception e) {}
@@ -54,7 +55,7 @@ public class Game {
 		}
 		int pos = Arrays.asList(options).indexOf(optionMachine);
 		if (pos < 0) {
-			throw new NullPointerException("" + pos + " & " + optionUser + " & " + optionMachine);
+			throw new NullPointerException(s(3, pos, optionUser, optionMachine));
 		} else {
 			return pos == 0 ? true : false; //TODO: add more options and set this to pos <= x ? true : false
 		}
@@ -72,12 +73,12 @@ public class Game {
 			Boolean result = juego.checkWinner(optionUser, optionMachine);
 			StringBuilder sb = new StringBuilder("")
 					.append(result == null 
-						? "empate " 
+						? s(4) 
 						: result
-							? "gana usuario " 
-							: "gana maquina "
+							? s(5) 
+							: s(6)
 					)
-					.append(optionUser + " vs " + optionMachine);
+					.append(s(7, optionUser, optionMachine));
 			log(sb.toString());
 			
 		}

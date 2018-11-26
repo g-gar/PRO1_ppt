@@ -1,4 +1,4 @@
-package uem.prog;
+package uem.prog.test;
 
 import java.util.ArrayList;
 import java.util.List;
