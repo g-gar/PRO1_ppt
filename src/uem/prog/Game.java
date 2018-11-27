@@ -57,7 +57,7 @@ public class Game {
 		if (pos < 0) {
 			throw new NullPointerException(s(3, pos, optionUser, optionMachine));
 		} else {
-			return pos == 0 ? true : false; //TODO: add more options and set this to pos <= x ? true : false
+			return pos < 1 ? true : false; //TODO: add more options and set this to pos <= x ? true : false
 		}
 	}
 	
